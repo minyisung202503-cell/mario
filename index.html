@@ -40,5 +40,23 @@
       <p class="controls">Move: Arrow Keys, Jump: X, Run: Z</p>
       <div class="links">My Links <br><a href="http://garrettjohnson.net">Portfolio</a> <a href="http://linkedin.com/in/garretttjohnson">LinkedIn</a> <a href="https://github.com/reruns">github</a><div>
     </div>
+
+      <script>
+window.addEventListener("message", function(event) {
+    if (event.data && event.data.type === "VIRTUAL_KEY") {
+        const keyData = event.data;
+        const eventType = keyData.isDown ? 'keydown' : 'keyup';
+        
+        const fakeEvent = new KeyboardEvent(eventType, {
+            key: keyData.key,
+            code: keyData.key,
+            keyCode: keyData.code,
+            which: keyData.code,
+            bubbles: true
+        });
+        window.dispatchEvent(fakeEvent);
+    }
+});
+</script>
   </body>
 </html>
